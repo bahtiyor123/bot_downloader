@@ -12,11 +12,11 @@ const bot = new Snake({
 }) 
 
 
-
+var port = process.env.PORT || 8080;
 
 function start () {
   bot.run()
-  app.listen(5100,() => console.log('Server is working'))
+  app.listen(port,() => console.log('Server is working'))
 }
 
 
