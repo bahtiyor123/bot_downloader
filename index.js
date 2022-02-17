@@ -11,12 +11,20 @@ const bot = new Snake({
  
 }) 
 
+async function start () {
+  await bot.run()
 
-var port = process.env.PORT || 8080;
-
-function start () {
-  bot.run()
-  app.listen(port,() => console.log('Server is working'))
+  setInterval(async () => {
+    const result = await bot.client.invoke(
+      new Api.account.UpdateStatus({
+        offline: false,
+      })
+    )
+  
+    console.log(result)
+  },3000)
+  
+  app.listen(5100,() => console.log('Server is working'))
 }
 
 
@@ -25,6 +33,7 @@ start()
 app.get('/',(req,res) => {
   res.send('working')
 })
+
 
 
 
