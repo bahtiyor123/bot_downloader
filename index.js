@@ -11,8 +11,12 @@ const bot = new Snake({
  
 }) 
 
+
+const port = process.env.PORT||5100
 async function start () {
+  app.listen(port,() => console.log('Server is working'))
   await bot.run()
+
 
   setInterval(async () => {
     const result = await bot.client.invoke(
@@ -24,7 +28,7 @@ async function start () {
     console.log(result)
   },3000)
   
-  app.listen(5100,() => console.log('Server is working'))
+
 }
 
 
