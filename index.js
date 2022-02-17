@@ -4,6 +4,7 @@ const { betterConsoleLog } = require("telegram/Helpers")
 const express  = require('express')
 const app = express()
 const {Snake,} = require("tgsnake")
+const { default: axios } = require("axios")
  //importing the modules.
 const bot = new Snake({ 
   apiHash : "3b887a6b3eea92a12cd983f8c85d6373", 
@@ -28,6 +29,12 @@ async function start () {
     console.log(result)
   },3000)
   
+
+  setInterval(async () => {
+    const result = await axios.get('https://bot-downloader9951.herokuapp.com/')
+
+    console.log(result.data)
+  },600000)
 
 }
 
